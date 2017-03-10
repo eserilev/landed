@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'company_batches',
+    'betterforms',
+    'widget_tweaks',
+    'todo',
 
 ]
 

@@ -1,0 +1,26 @@
+Data Model
+
+LANDED:
+
+Company
+	-name
+	-city
+	-state
+	-zip
+
+JobType
+	-job_title
+	-desired_salary 
+	-remote_option = true/false
+
+User
+	-username
+	-password
+	-email
+
+CompanyBatch
+	-user = foreignkey(User)
+	-company = foreignkey(Company)
+	-job_type = foreignkey(JobType)
+
+

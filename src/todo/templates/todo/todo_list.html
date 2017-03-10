@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block nav_title %} Todo {% endblock nav_title %}
+{% block content %}
+    {% for obj in object_list %}
+        {% if forloop.first %}
+            <div class="page-header" >
+                <h1>{{ obj.company }}<small> Todo List</small></h1>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <ul class="list-group">
+        {% for obj in object_list %}
+            <li class="list-group-item">
+                <div class="checkbox">
+                     {% if obj.is_complete is False %}
+                         <label><input type="checkbox">{{ obj }}</label>
+                    {% else %}
+                         <label><input type="checkbox" checked="checked">{{ obj }}</label>
+                    {% endif %}
+                </div></li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

@@ -1,14 +1,16 @@
 from django import forms
+from django.conf.urls import url, include
+from betterforms.multiform import MultiModelForm
+
+
 
 from .models import *
 
-class JobTypeModelForm(forms.ModelForm):
+class JobModelForm(forms.ModelForm):
     class Meta:
-        model = JobType
+        model = Job
         fields = [
             "job_title",
-            "desired_salary",
-            "remote_option",
         ]
 
 class CompanyModelForm(forms.ModelForm):
@@ -22,10 +24,32 @@ class CompanyModelForm(forms.ModelForm):
         ]
 
 class CompanyBatchModelForm(forms.ModelForm):
+
     class Meta:
+
         model = CompanyBatch
         fields = [
             "user",
             "company",
-            "job_type",
+            "job",
+            "resume",
+            "cover_letter"
+        ]
+        widgets = {
+            'company': forms.TextInput,
+            'job' : forms.TextInput,
+        }
+
+class ResumeModelForm(forms.ModelForm):
+    class Meta:
+        model = Resume
+        fields = [
+            "file",
+        ]
+
+class CoverLetterModelForm(forms.ModelForm):
+    class Meta:
+        model = CoverLetter
+        fields = [
+            "file",
         ]

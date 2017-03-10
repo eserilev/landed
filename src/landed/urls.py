@@ -23,7 +23,8 @@ from .views import home
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='home'),
-    url(r'^batches/', include('company_batches.urls'))
+    url(r'^batches/', include('company_batches.urls', namespace='batches')),
+    url(r'^todo/', include('todo.urls', namespace='todo'))
 ]
 
 if settings.DEBUG:

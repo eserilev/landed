@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+
+<script type="javascript">
+    $(function(){
+      $("#company").autocomplete({
+          source : "/api/get_companies/",
+          minLength: 3,
+      })
+    })
+</script>
+{% block content %}
+    <form class="form" method="POST" action="">
+        <div class="jumbotron" style="background-color: white" >
+              <div class="row">
+
+                      {% csrf_token %}
+                      <div class="col-xs-12">
+                          <label>Company</label>
+                          <div class="form-group">
+                              {% render_field form.company class+="form-control" id+="company" %}
+                          </div>
+                      </div>
+                      <div class="col-xs-12">
+                          <label>Job Title</label>
+                          <div class="form-group">
+                              {% render_field form.job class+="form-control" %}
+                          </div>
+                      </div>
+              </div>
+        </div>
+        <div class="jumbotron" style="background-color: white" >
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label>Resume</label>
+                        {% render_field form.resume class+="form-control" %}
+                    </div>
+                </div>
+                <div class="col-xs-12 text-right">
+                    <small>If your resume isn't listed  </small><a type="button"  class="btn btn-primary btn-sm" href={% url 'company_batches:resume' %}>Upload Resume</a>
+                </div>
+            </div>
+        </div>
+        <div class="jumbotron" style="background-color: white" >
+            <div class="row">
+
+                <div class="col-xs-12">
+                    <label>Cover Letter</label>
+                    <div class="form-group">
+                        {% render_field form.cover_letter class+="form-control" %}
+                    </div>
+                </div>
+                <div class="col-xs-12 text-right">
+                    <small>If your cover letter isn't listed  </small> <a type="button" class="btn btn-primary btn-sm" href={% url 'company_batches:cover' %} >Upload CV</a>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="jumbotron" style="background: white">
+            <div class="row">
+                      <div class="col-xs-12 text-center">
+                          <input type="submit" class="btn btn-primary btn-lg" value ="{{ btn_title }}" />
+                      </div>
+
+              </div>
+
+        </div>
+     </form>
+
+{% endblock content %}

@@ -1,0 +1,14 @@
+href-nostyle{
+    color: inherit;
+    text-decoration: none;
+}
+
+href-nostyle:hover{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+landed-background {
+    background-color : #eee
+}
