@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block nav_title %} Todo {% endblock nav_title %}
+{% block content %}
+
+    <div class="jumbotron">
+        {% for obj in object_list %}
+            {{ obj }}
+        {% endfor %}
+    </div>
+{% endblock content %}

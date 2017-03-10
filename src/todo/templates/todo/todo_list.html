@@ -11,10 +11,11 @@
 
     <ul class="list-group">
         {% for obj in object_list %}
+
             <li class="list-group-item">
                 <div class="checkbox">
                      {% if obj.is_complete is False %}
-                         <label><input type="checkbox">{{ obj }}</label>
+                         <label><input type="checkbox"/><a href={% url 'todo:detail' cid=obj.company.id tid=obj.todo_item.id %}>{{ obj }}</a></label>
                     {% else %}
                          <label><input type="checkbox" checked="checked">{{ obj }}</label>
                     {% endif %}

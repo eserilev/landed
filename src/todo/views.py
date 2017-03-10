@@ -20,3 +20,15 @@ class ToDoCreateView( LoginRequiredMixin, CreateView):
     form_class = ToDoItem
     template_name = 'todo/todo_create.html'
     success_url = '/todo/'
+
+class ToDoDetailView( LoginRequiredMixin, DetailView):
+    form_class = ToDoItem
+    template_name = 'todo/todo_detail.html'
+    pk_url_kwarg = 'tid'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(ToDoDetailView, self).get_context_data(*args, **kwargs)
+        return context
+    def get_queryset(self, *args, **kwargs):
+        tid = self.kwargs['tid']
+        return ToDoItem.objects.filter(id = tid)
