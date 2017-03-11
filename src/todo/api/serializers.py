@@ -1,12 +1,27 @@
 from rest_framework import serializers
 
-#from ...accounts.api.serializers import UserDisplaySerializer
-from ..models import ToDoList
+from src.accounts.api.serializers import UserDisplaySerializer
+from ..models import *
+
+
+class ToDoItemModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ToDoItem
+        fields = [
+            'title',
+            'description',
+            'rank'
+        ]
 
 class ToDoListModelSerializer(serializers.ModelSerializer):
-    #user = UserDisplaySerializer()
+    user = UserDisplaySerializer()
+    todo_item = ToDoItemModelSerializer()
     class Meta:
         model = ToDoList
         fields = [
-            'is_complete'
+            'user',
+            'todo_item',
+            'is_complete',
+
         ]
+
