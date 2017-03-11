@@ -3,7 +3,7 @@
 {% block content %}
 
       {% for obj in object_list %}
-          <a href={% url 'todo:list' cid=obj.company.id%} class="href-nostyle">
+          <a class="href-nostyle" href={% url 'todo:list' cid=obj.company.id%} >
               <div class="jumbotron" style="background:white">
                   <div class="text-center">
                       <h1>{{ obj.company }}<br>

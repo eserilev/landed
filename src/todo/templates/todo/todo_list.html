@@ -12,14 +12,15 @@
     <ul class="list-group">
         {% for obj in object_list %}
 
-            <li class="list-group-item">
-                <div class="checkbox">
-                     {% if obj.is_complete is False %}
-                         <label><input type="checkbox"/><a href={% url 'todo:detail' cid=obj.company.id tid=obj.todo_item.id %}>{{ obj }}</a></label>
-                    {% else %}
-                         <label><input type="checkbox" checked="checked">{{ obj }}</label>
-                    {% endif %}
-                </div></li>
+                 {% if obj.is_complete is False %}
+                     <a class="list-group-item" href={% url 'todo:detail' cid=obj.company.id tid=obj.todo_item.id %}>
+                         <div class="checkbox">
+                             <label><input type="checkbox"/>{{ obj }}</label>
+                         </div>
+                     </a>
+                {% else %}
+                     <label><input type="checkbox" checked="checked">{{ obj }}</label>
+                {% endif %}
         {% endfor %}
     </ul>
 

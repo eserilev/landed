@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'betterforms',
     'widget_tweaks',
     'todo',
+    'rest_framework'
 
 ]
 

@@ -1,0 +1,1 @@
+@"c:\users\eitan\virtualenviorments\landed\scripts\python.exe" "c:\users\eitan\virtualenviorments\landed\Scripts\markdown_py" %*
