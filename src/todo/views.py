@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.shortcuts import render
-from django.views.generic import DetailView, ListView, CreateView
+from django.views.generic import DetailView, ListView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import *
+from .forms import *
 
 # Create your views here.
 class ToDoListView(ListView,):
@@ -26,3 +26,15 @@ class ToDoDetailView( LoginRequiredMixin, DetailView):
     queryset = ToDoItem.objects.all()
     pk_url_kwarg = 'tid'
 
+class ToDoMarkCompleteView(LoginRequiredMixin, UpdateView):
+    queryset = ToDoItem.objects.all()
+    #form_class = ToDoItemModelForm
+
+
+
+def ToDo_list_and_update(request):
+    form = ToDoItemModelForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+    objects = ToDoList.objects.all()
+    return render(request, 'todo/todo_list.html', {'objects': objects, 'form': form})
