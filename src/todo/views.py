@@ -31,10 +31,11 @@ class ToDoMarkCompleteView(LoginRequiredMixin, UpdateView):
     #form_class = ToDoItemModelForm
 
 
-
+'''
 def ToDo_list_and_update(request):
-    form = ToDoItemModelForm(request.POST or None)
+    form = ToDoListModelForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
         form.save()
     objects = ToDoList.objects.all()
     return render(request, 'todo/todo_list.html', {'objects': objects, 'form': form})
+'''

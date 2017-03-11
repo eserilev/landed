@@ -24,7 +24,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name='home'),
     url(r'^batches/', include('company_batches.urls', namespace='batches')),
-    url(r'^todo/', include('todo.urls', namespace='todo'))
+    url(r'^todo/', include('todo.urls', namespace='todo')),
+    url(r'^api/todo/', include('todo.api.urls', namespace='todo-api'))
 ]
 
 if settings.DEBUG:
